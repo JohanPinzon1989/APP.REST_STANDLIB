@@ -1,8 +1,9 @@
 import express from "express";
 import morgan from "morgan";
 import paisRoutes from "./routes/pais.routes";
-import perfil_usuariosRoutes from "./routes/perfil_usuarios.routes";
-import Tipo_IdentificacionRoutes from "./routes/Tipo_Identificacion.routes";
+import perfilUsuariosRoutes from "./routes/perfilUsuarios.routes";
+import TipoIdentificacionRoutes from "./routes/TipoIdentificacion.routes";
+import estadoUsuarioRoutes from "./routes/EstadosUsuario.routes";
 
 const app = express();
 
@@ -15,7 +16,8 @@ app.use(express.json());
 
 //Routes
 app.use("/api/paises", paisRoutes);
-app.use("/api/p_u", perfil_usuariosRoutes);
-app.use("/api/t_i", Tipo_IdentificacionRoutes);
+app.use("/api/p_u", perfilUsuariosRoutes);
+app.use("/api/t_i", TipoIdentificacionRoutes);
+app.use("/api/e_u", estadoUsuarioRoutes);
 
 export default app;

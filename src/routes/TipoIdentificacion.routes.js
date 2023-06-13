@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { methods as t_iController } from "../controllers/Tipo_Identificacion.controller";
+import { methods as t_iController } from "../controllers/TipoIdentificacion.controller";
 
 const router = Router();
 

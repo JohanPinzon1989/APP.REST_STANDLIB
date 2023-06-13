@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { methods as p_uController } from "../controllers/perfil_usuarios.controller";
+import { methods as p_uController } from "../controllers/perfilUsuarios.controller";
 
 const router = Router();
 
