@@ -2,10 +2,10 @@ import { json } from "express";
 import { getConnection } from "../database/database";
 
 //Listar
-const getOrg = async (req, res) => {
+const getIndustria = async (req, res) => {
   try {
     const connection = await getConnection();
-    const result = await connection.query("SELECT * FROM organismos");
+    const result = await connection.query("SELECT * FROM industria");
     res.json(result);
   } catch (error) {
     res.status(500);
@@ -14,12 +14,12 @@ const getOrg = async (req, res) => {
 };
 
 //Buscar
-const findOrg = async (req, res) => {
+const findIndustria = async (req, res) => {
   try {
     const { Id } = req.params;
     const connection = await getConnection();
     const result = await connection.query(
-      "SELECT * FROM organismos WHERE Id = ?",
+      "SELECT * FROM industria WHERE Id = ?",
       Id
     );
     res.json(result);
@@ -30,22 +30,36 @@ const findOrg = async (req, res) => {
 };
 
 //Agregar
-const addOrg = async (req, res) => {
+const addIndustria = async (req, res) => {
   try {
-    const { Organismo, Abreviacion, Descripcion, Descripcion_ing } = req.body;
+    const {
+      Industria,
+      industria_ing,
+      Abreviacion,
+      Abreviacion_ing,
+      Descripcion,
+      Descripcion_ing,
+    } = req.body;
 
-    if ((Organismo === undefined, Abreviacion === undefined)) {
+    if (
+      Industria === undefined ||
+      industria_ing === undefined ||
+      Abreviacion === undefined ||
+      Abreviacion_ing === undefined
+    ) {
       res.status(400), json({ message: "Bad Request. Ingrese un estado" });
     }
 
-    const org = {
-      Organismo,
+    const industria = {
+      Industria,
+      industria_ing,
       Abreviacion,
+      Abreviacion_ing,
       Descripcion,
       Descripcion_ing,
     };
     const connection = await getConnection();
-    await connection.query("INSERT INTO organismos SET ?", org);
+    await connection.query("INSERT INTO industria SET ?", industria);
     res.json({ message: "Estado de usuario registrado" });
   } catch (error) {
     res.status(500);
@@ -54,28 +68,41 @@ const addOrg = async (req, res) => {
 };
 
 //Actuaizar
-const updateOrg = async (req, res) => {
+const updateIndustria = async (req, res) => {
   try {
     const { Id } = req.params;
-    const { Organismo, Abreviacion, Descripcion, Descripcion_ing } = req.body;
+    const {
+      Industria,
+      industria_ing,
+      Abreviacion,
+      Abreviacion_ing,
+      Descripcion,
+      Descripcion_ing,
+    } = req.body;
 
     if (
-      (Id === undefined || Organismo === undefined, Abreviacion === undefined)
+      Id === undefined ||
+      Industria === undefined ||
+      industria_ing === undefined ||
+      Abreviacion === undefined ||
+      Abreviacion_ing === undefined
     ) {
       res.status(400),
         json({ message: "Bad Request. Por favor ingrese todos los datos." });
     }
 
-    const org = {
-      Organismo,
+    const industria = {
+      Industria,
+      industria_ing,
       Abreviacion,
+      Abreviacion_ing,
       Descripcion,
       Descripcion_ing,
     };
     const connection = await getConnection();
     const result = await connection.query(
-      "UPDATE organismos SET ? WHERE Id = ?",
-      [org, Id]
+      "UPDATE industria SET ? WHERE Id = ?",
+      [industria, Id]
     );
     res.json(result);
   } catch (error) {
@@ -85,12 +112,12 @@ const updateOrg = async (req, res) => {
 };
 
 //Eliminar
-const deleteOrg = async (req, res) => {
+const deleteIndustria = async (req, res) => {
   try {
     const { Id } = req.params;
     const connection = await getConnection();
     const result = await connection.query(
-      "DELETE FROM organismos WHERE Id = ?",
+      "DELETE FROM industria WHERE Id = ?",
       Id
     );
     res.json(result);
@@ -101,9 +128,9 @@ const deleteOrg = async (req, res) => {
 };
 
 export const methods = {
-  getOrg,
-  findOrg,
-  addOrg,
-  deleteOrg,
-  updateOrg,
+  getIndustria,
+  findIndustria,
+  addIndustria,
+  deleteIndustria,
+  updateIndustria,
 };

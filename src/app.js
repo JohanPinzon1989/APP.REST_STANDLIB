@@ -7,6 +7,7 @@ import estadoUsuarioRoutes from "./routes/EstadosUsuario.routes";
 import estadoTenantRoutes from "./routes/estadoTenant.routes";
 import estadosDocumentosRoutes from "./routes/estadosDocumentos.routes";
 import organismosRoutes from "./routes/organismos.routes";
+import industriaRoutes from "./routes/industria.routes";
 
 const app = express();
 
@@ -25,5 +26,6 @@ app.use("/api/e_u", estadoUsuarioRoutes);
 app.use("/api/e_t", estadoTenantRoutes);
 app.use("/api/e_d", estadosDocumentosRoutes);
 app.use("/api/organismos", organismosRoutes);
+app.use("/api/industria", industriaRoutes);
 
 export default app;
