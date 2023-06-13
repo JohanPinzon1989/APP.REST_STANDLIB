@@ -38,7 +38,7 @@ const addE_u = async (req, res) => {
       res.status(400), json({ message: "Bad Request. Ingrese un estado" });
     }
 
-    const e_u = { Perfil, Descripcion };
+    const e_u = { Estado, Descripcion };
     const connection = await getConnection();
     await connection.query("INSERT INTO estado_usuarios SET ?", e_u);
     res.json({ message: "Estado de usuario registrado" });

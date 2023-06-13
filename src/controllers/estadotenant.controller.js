@@ -2,10 +2,10 @@ import { json } from "express";
 import { getConnection } from "../database/database";
 
 //Listar
-const getP_u = async (req, res) => {
+const getE_t = async (req, res) => {
   try {
     const connection = await getConnection();
-    const result = await connection.query("SELECT * FROM perfil_usuario");
+    const result = await connection.query("SELECT * FROM estado_tenant");
     res.json(result);
   } catch (error) {
     res.status(500);
@@ -14,12 +14,12 @@ const getP_u = async (req, res) => {
 };
 
 //Buscar
-const findP_u = async (req, res) => {
+const findE_t = async (req, res) => {
   try {
     const { Id } = req.params;
     const connection = await getConnection();
     const result = await connection.query(
-      "SELECT * FROM perfil_usuario WHERE Id = ?",
+      "SELECT * FROM estado_tenant WHERE Id = ?",
       Id
     );
     res.json(result);
@@ -30,18 +30,18 @@ const findP_u = async (req, res) => {
 };
 
 //Agregar
-const addP_u = async (req, res) => {
+const addE_t = async (req, res) => {
   try {
-    const { Perfil, Perfil_ing, Descripcion, Descripcion_ing } = req.body;
+    const { Estado, Descripcion } = req.body;
 
-    if (Perfil === undefined || Perfil_ing === undefined) {
-      res.status(400), json({ message: "Bad Request. Ingrese un perfil" });
+    if (Estado === undefined) {
+      res.status(400), json({ message: "Bad Request. Ingrese un estado" });
     }
 
-    const p_u = { Perfil, Perfil_ing, Descripcion, Descripcion_ing };
+    const e_t = { Estado, Descripcion };
     const connection = await getConnection();
-    await connection.query("INSERT INTO perfil_usuario SET ?", p_u);
-    res.json({ message: "Perfil registrado" });
+    await connection.query("INSERT INTO estado_tenant SET ?", e_t);
+    res.json({ message: "Estado de usuario registrado" });
   } catch (error) {
     res.status(500);
     res.send(error.message);
@@ -49,21 +49,21 @@ const addP_u = async (req, res) => {
 };
 
 //Actuaizar
-const updateP_u = async (req, res) => {
+const updateE_t = async (req, res) => {
   try {
     const { Id } = req.params;
-    const { Perfil, Perfil_ing, Descripcion, Descripcion_ing } = req.body;
+    const { Estado, Descripcion } = req.body;
 
-    if (Id === undefined || Perfil === undefined || Perfil_ing === undefined) {
+    if (Id === undefined || Estado === undefined) {
       res.status(400),
         json({ message: "Bad Request. Por favor ingrese todos los datos." });
     }
 
-    const p_u = { Perfil, Perfil_ing, Descripcion, Descripcion_ing };
+    const e_t = { Estado, Descripcion };
     const connection = await getConnection();
     const result = await connection.query(
-      "UPDATE perfil_usuario SET ? WHERE Id = ?",
-      [p_u, Id]
+      "UPDATE estado_tenant SET ? WHERE Id = ?",
+      [e_t, Id]
     );
     res.json(result);
   } catch (error) {
@@ -73,12 +73,12 @@ const updateP_u = async (req, res) => {
 };
 
 //Eliminar
-const deleteP_u = async (req, res) => {
+const deleteE_t = async (req, res) => {
   try {
     const { Id } = req.params;
     const connection = await getConnection();
     const result = await connection.query(
-      "DELETE FROM perfil_usuario WHERE Id = ?",
+      "DELETE FROM estado_tenant WHERE Id = ?",
       Id
     );
     res.json(result);
@@ -89,9 +89,9 @@ const deleteP_u = async (req, res) => {
 };
 
 export const methods = {
-  getP_u,
-  findP_u,
-  addP_u,
-  deleteP_u,
-  updateP_u,
+  getE_t,
+  findE_t,
+  addE_t,
+  deleteE_t,
+  updateE_t,
 };

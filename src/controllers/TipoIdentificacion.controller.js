@@ -32,14 +32,19 @@ const findT_i = async (req, res) => {
 //Agregar
 const addT_i = async (req, res) => {
   try {
-    const { Tipo, Abreviacion, Descripcion } = req.body;
+    const { Tipo, Tipo_ing, Abreviacion, Descripcion, Descripcion_ing } =
+      req.body;
 
-    if (Tipo === undefined || Abreviacion === undefined) {
+    if (
+      Tipo === undefined ||
+      Tipo_ing === undefined ||
+      Abreviacion === undefined
+    ) {
       res.status(400),
         json({ message: "Bad Request. Ingrese todos los datos" });
     }
 
-    const t_i = { Perfil, Descripcion };
+    const t_i = { Tipo, Tipo_ing, Abreviacion, Descripcion, Descripcion_ing };
     const connection = await getConnection();
     await connection.query("INSERT INTO Tipo_Identificacion SET ?", t_i);
     res.json({ message: "Tipo de identificacion registrado" });
@@ -53,14 +58,20 @@ const addT_i = async (req, res) => {
 const updateT_i = async (req, res) => {
   try {
     const { Id } = req.params;
-    const { Tipo, Abreviacion, Descripcion } = req.body;
+    const { Tipo, Tipo_ing, Abreviacion, Descripcion, Descripcion_ing } =
+      req.body;
 
-    if (Id === undefined || Tipo === undefined || Abreviacion === undefined) {
+    if (
+      Id === undefined ||
+      Tipo === undefined ||
+      Tipo_ing === undefined ||
+      Abreviacion === undefined
+    ) {
       res.status(400),
         json({ message: "Bad Request. Por favor ingrese todos los datos." });
     }
 
-    const t_i = { Tipo, Abreviacion, Descripcion };
+    const t_i = { Tipo, Tipo_ing, Abreviacion, Descripcion, Descripcion_ing };
     const connection = await getConnection();
     const result = await connection.query(
       "UPDATE Tipo_Identificacion SET ? WHERE Id = ?",

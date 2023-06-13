@@ -32,14 +32,18 @@ const findPais = async (req, res) => {
 //Agregar
 const addPais = async (req, res) => {
   try {
-    const { Pais, Abreviatura } = req.body;
+    const { Pais, Pais_ing, Abreviatura } = req.body;
 
-    if (Pais === undefined || Abreviatura === undefined) {
+    if (
+      Pais === undefined ||
+      Pais_ing === Pais_ing ||
+      Abreviatura === undefined
+    ) {
       res.status(400),
         json({ message: "Bad Request. Por favor ingrese todos los datos." });
     }
 
-    const pais = { Pais, Abreviatura };
+    const pais = { Pais, Pais_ing, Abreviatura };
     const connection = await getConnection();
     await connection.query("INSERT INTO Pais SET ?", pais);
     res.json({ message: "Pais registrado" });
@@ -53,14 +57,19 @@ const addPais = async (req, res) => {
 const updatePais = async (req, res) => {
   try {
     const { Id } = req.params;
-    const { Pais, Abreviatura } = req.body;
+    const { Pais, Pais_ing, Abreviatura } = req.body;
 
-    if (Id === undefined || Pais === undefined || Abreviatura === undefined) {
+    if (
+      Id === undefined ||
+      Pais === undefined ||
+      Pais_ing === undefined ||
+      Abreviatura === undefined
+    ) {
       res.status(400),
         json({ message: "Bad Request. Por favor ingrese todos los datos." });
     }
 
-    const pais = { Pais, Abreviatura };
+    const pais = { Pais, Pais_ing, Abreviatura };
     const connection = await getConnection();
     const result = await connection.query("UPDATE Pais SET ? WHERE Id = ?", [
       pais,
