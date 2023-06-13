@@ -5,6 +5,7 @@ import perfilUsuariosRoutes from "./routes/perfilUsuarios.routes";
 import TipoIdentificacionRoutes from "./routes/TipoIdentificacion.routes";
 import estadoUsuarioRoutes from "./routes/EstadosUsuario.routes";
 import estadoTenantRoutes from "./routes/estadoTenant.routes";
+import estadosDocumentos from "./routes/estadosDocumentos.routes";
 
 const app = express();
 
@@ -21,5 +22,6 @@ app.use("/api/p_u", perfilUsuariosRoutes);
 app.use("/api/t_i", TipoIdentificacionRoutes);
 app.use("/api/e_u", estadoUsuarioRoutes);
 app.use("/api/e_t", estadoTenantRoutes);
+app.use("/api/e_d", estadosDocumentos);
 
 export default app;
