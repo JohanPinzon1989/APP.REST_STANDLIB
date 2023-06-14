@@ -15,6 +15,7 @@ import tenantRoutes from "./routes/tenant.routes";
 import documentosRoutes from "./routes/documentos.routes";
 import i_dRoutes from "./routes/industriaDocumentos.routes";
 import u_sRoutes from "./routes/usuariosStandlib.routes";
+import p_iRoutes from "./routes/planesIndustria.routes";
 
 const app = express();
 
@@ -41,5 +42,6 @@ app.use("/api/tenant", tenantRoutes);
 app.use("/api/documentos", documentosRoutes);
 app.use("/api/i_d", i_dRoutes);
 app.use("/api/u_s", u_sRoutes);
+app.use("/api/p_i", p_iRoutes);
 
 export default app;
