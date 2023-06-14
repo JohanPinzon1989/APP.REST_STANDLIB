@@ -17,6 +17,7 @@ import i_dRoutes from "./routes/industriaDocumentos.routes";
 import u_sRoutes from "./routes/usuariosStandlib.routes";
 import p_iRoutes from "./routes/planesIndustria.routes";
 import r_iRoutes from "./routes/rolInterfaces.routes";
+import usRoutes from "./routes/usuario.routes";
 
 const app = express();
 
@@ -45,5 +46,6 @@ app.use("/api/i_d", i_dRoutes);
 app.use("/api/u_s", u_sRoutes);
 app.use("/api/p_i", p_iRoutes);
 app.use("/api/r_i", r_iRoutes);
+app.use("/api/us", usRoutes);
 
 export default app;
