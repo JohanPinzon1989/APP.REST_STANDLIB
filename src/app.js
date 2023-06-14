@@ -14,6 +14,7 @@ import estadoProvinciaRoutes from "./routes/estadoProvincia.routes";
 import tenantRoutes from "./routes/tenant.routes";
 import documentosRoutes from "./routes/documentos.routes";
 import i_dRoutes from "./routes/industriaDocumentos.routes";
+import u_sRoutes from "./routes/usuariosStandlib.routes";
 
 const app = express();
 
@@ -39,5 +40,6 @@ app.use("/api/e_p", estadoProvinciaRoutes);
 app.use("/api/tenant", tenantRoutes);
 app.use("/api/documentos", documentosRoutes);
 app.use("/api/i_d", i_dRoutes);
+app.use("/api/u_s", u_sRoutes);
 
 export default app;
