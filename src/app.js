@@ -21,6 +21,7 @@ import usRoutes from "./routes/usuario.routes";
 import u_iRoutes from "./routes/usuariosIndustria.routes";
 import u_dRoutes from "./routes/usuariosDocumentos.routes";
 import r_dRoutes from "./routes/registroDocumentos.routes";
+import h_fRoutes from "./routes/historialFacturacion.routes";
 
 const app = express();
 
@@ -53,5 +54,6 @@ app.use("/api/us", usRoutes);
 app.use("/api/u_i", u_iRoutes);
 app.use("/api/u_d", u_dRoutes);
 app.use("/api/r_d", r_dRoutes);
+app.use("/api/h_f", h_fRoutes);
 
 export default app;
