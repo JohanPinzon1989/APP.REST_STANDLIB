@@ -13,6 +13,7 @@ import rolUsuarioEmpresaRoutes from "./routes/rolUsuarioEmpresa.routes";
 import estadoProvinciaRoutes from "./routes/estadoProvincia.routes";
 import tenantRoutes from "./routes/tenant.routes";
 import documentosRoutes from "./routes/documentos.routes";
+import i_dRoutes from "./routes/industriaDocumentos.routes";
 
 const app = express();
 
@@ -33,9 +34,10 @@ app.use("/api/e_d", estadosDocumentosRoutes);
 app.use("/api/organismos", organismosRoutes);
 app.use("/api/industria", industriaRoutes);
 app.use("/api/planes", planesRoutes);
-app.use("/api7r_u_e", rolUsuarioEmpresaRoutes);
+app.use("/api/r_u_e", rolUsuarioEmpresaRoutes);
 app.use("/api/e_p", estadoProvinciaRoutes);
 app.use("/api/tenant", tenantRoutes);
-app.use("/api", documentosRoutes);
+app.use("/api/documentos", documentosRoutes);
+app.use("/api/i_d", i_dRoutes);
 
 export default app;
