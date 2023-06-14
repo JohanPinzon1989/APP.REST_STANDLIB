@@ -11,6 +11,7 @@ import industriaRoutes from "./routes/industria.routes";
 import planesRoutes from "./routes/planes.routes";
 import rolUsuarioEmpresaRoutes from "./routes/rolUsuarioEmpresa.routes";
 import estadoProvinciaRoutes from "./routes/estadoProvincia.routes";
+import tenantRoutes from "./routes/tenant.routes";
 
 const app = express();
 
@@ -33,5 +34,6 @@ app.use("/api/industria", industriaRoutes);
 app.use("/api/planes", planesRoutes);
 app.use("/api7r_u_e", rolUsuarioEmpresaRoutes);
 app.use("/api/e_p", estadoProvinciaRoutes);
+app.use("/api/tenant", tenantRoutes);
 
 export default app;
