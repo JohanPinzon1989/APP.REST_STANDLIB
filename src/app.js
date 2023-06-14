@@ -9,7 +9,8 @@ import estadosDocumentosRoutes from "./routes/estadosDocumentos.routes";
 import organismosRoutes from "./routes/organismos.routes";
 import industriaRoutes from "./routes/industria.routes";
 import planesRoutes from "./routes/planes.routes";
-import rolUsuarioEmpresa from "./routes/rolUsuarioEmpresa.routes";
+import rolUsuarioEmpresaRoutes from "./routes/rolUsuarioEmpresa.routes";
+import estadoProvinciaRoutes from "./routes/estadoProvincia.routes";
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use("/api/e_d", estadosDocumentosRoutes);
 app.use("/api/organismos", organismosRoutes);
 app.use("/api/industria", industriaRoutes);
 app.use("/api/planes", planesRoutes);
-app.use("/api7r_u_e", rolUsuarioEmpresa);
+app.use("/api7r_u_e", rolUsuarioEmpresaRoutes);
+app.use("/api/e_p", estadoProvinciaRoutes);
 
 export default app;
