@@ -26,7 +26,8 @@ import h_fRoutes from "./routes/historialFacturacion.routes";
 const app = express();
 
 //Settings
-app.set("port", 4100);
+const port = process.env.PORT || 4100;
+app.set("port", port);
 
 //Middleware
 app.use(morgan("dev"));
