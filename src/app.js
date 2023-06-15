@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import cors from "cors";
 import paisRoutes from "./routes/pais.routes";
 import perfilUsuariosRoutes from "./routes/perfilUsuarios.routes";
 import TipoIdentificacionRoutes from "./routes/TipoIdentificacion.routes";
@@ -32,6 +33,7 @@ app.set("port", port);
 //Middleware
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cors());
 
 //Routes
 app.use("/api/paises", paisRoutes);
